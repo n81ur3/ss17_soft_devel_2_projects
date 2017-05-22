@@ -10,7 +10,8 @@ public class Main {
 
     public static void main(String[] args) {
         HtmlQuestionWriter writer = new HtmlQuestionWriter();
-        QuestionReader reader = new QuestionReader();
+        Validator validator = new QuizQuestionValidator();
+        QuestionReader reader = new QuestionReader(validator);
 
         if (args.length != 2) {
             printUsageInfo();

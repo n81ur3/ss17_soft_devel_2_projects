@@ -9,6 +9,11 @@ import java.util.ArrayList;
  *         Created on 2017/05/20.
  */
 public class QuestionReader {
+    private Validator validator;
+
+    public QuestionReader(Validator validator) {
+        this.validator = validator;
+    }
 
     public ArrayList<Question> readQuestions(String location) {
         ArrayList<Question> questions = new ArrayList<>();
@@ -19,7 +24,7 @@ public class QuestionReader {
             //BufferedReader in = new BufferedReader(new FileReader(new File(getClass().getClassLoader().getResource("sample_quiz.csv").getPath())));
             String line;
             while ((line = in.readLine()) != null) {
-                if (!(line.startsWith("#")) && !(line.isEmpty()) && isValidLine(line)) {
+                if (validator.isValid(line)) {
                     questions.add(getQuestionFromLine(line));
                 }
             }
@@ -30,46 +35,7 @@ public class QuestionReader {
         return questions;
     }
 
-    private boolean isValidLine(String line) {
-       String answerText;
-       String correctAnswer;
 
-       String[] parts = line.split(";");
-       if (parts.length != 3) {
-           return false;
-       }
-
-       for (String s : parts) {
-           if (s.isEmpty()) {
-               return false;
-           }
-       }
-
-       answerText = parts[1];
-       correctAnswer = parts[2];
-
-       if(!(checkAnswerIndex(answerText, correctAnswer))) {
-          return false;
-       }
-
-        return true;
-    }
-
-    private boolean checkAnswerIndex(String answerText, String correctAnswer) {
-
-        if (!(correctAnswer.matches("[0-4]"))) {
-            return false;
-        }
-
-        String[] answers = answerText.split("/");
-        int correctIndex = Integer.parseInt(correctAnswer);
-
-        if (answers.length < 2 || correctIndex > answers.length) {
-            return false;
-        }
-
-        return true;
-    }
 
     private Question getQuestionFromLine(String line) {
         String[] parts = line.split(";");
