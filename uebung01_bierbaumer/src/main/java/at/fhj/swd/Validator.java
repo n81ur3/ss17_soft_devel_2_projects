@@ -6,5 +6,10 @@ package at.fhj.swd;
  */
 public interface Validator {
 
+    /**
+     * Validates the given String
+     * @param stringToCheck the String to check for usage
+     * @return true if the String is acceptable, false otherwise
+     */
     boolean isValid(String stringToCheck);
 }

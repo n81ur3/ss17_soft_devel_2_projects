@@ -29,21 +29,10 @@ public class Question {
 
     public boolean isCorrect(int input) {
         return (input - 1) == solutionIndex;
-        /*
-        int modifiedInput = input -1;
-        if(modifiedInput == solutionIndex){
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-        */
-    }
+   }
 
     public String generateQuestionText() {
         String text = question;
-        //text = text + "\n";
         text += "\n";
 
         for (int i = 0; i < answers.length; i++) {
