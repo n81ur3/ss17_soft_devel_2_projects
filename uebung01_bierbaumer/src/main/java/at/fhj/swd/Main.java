@@ -25,7 +25,7 @@ public class Main {
         if (questions != null && questions.size() > 0) {
             setStyle(formatter);
             writer.writeQuestion(args[1], questions);
-            if (promptForOutput()) {
+            if (promptForOutput()) {                     //give the user the option to display the result immediately
                 HtmlViewer.displayHtml("file", args[1]);
             }
         } else {
@@ -34,6 +34,9 @@ public class Main {
 
     }
 
+    /**
+     * Prints some usage information on the console in case the user has not provided two arguments
+     */
     private static void printUsageInfo() {
         System.out.println("You must provide two command line arguments");
         System.out.println("First argument: location of the csv file from which to import questions");

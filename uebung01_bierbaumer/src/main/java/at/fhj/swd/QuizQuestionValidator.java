@@ -37,10 +37,10 @@ public class QuizQuestionValidator implements Validator {
     }
 
     /**
-     * Checks for a valid anser index. The index must be in the range 2-4
-     * @param answerText
-     * @param correctAnswer
-     * @return
+     * Checks for a valid answer index. The index must be in the range 2-4
+     * @param answerText a String containing the possible answers separated by a slash
+     * @param correctAnswer the zero-based index of the correct answer
+     * @return true if the answer index is in range 2-4 and not higher than (no. of possible answers - 1), false otherwise
      */
     private boolean checkAnswerIndex(String answerText, String correctAnswer) {
 

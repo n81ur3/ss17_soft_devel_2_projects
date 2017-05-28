@@ -8,7 +8,7 @@ public interface Validator {
 
     /**
      * Validates the given String
-     * @param stringToCheck the String to check for usage
+     * @param stringToCheck the String to check for correctnes
      * @return true if the String is acceptable, false otherwise
      */
     boolean isValid(String stringToCheck);
